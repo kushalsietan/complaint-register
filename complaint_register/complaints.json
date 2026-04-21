@@ -1,0 +1,20 @@
+{
+  "complaints": [
+    {
+      "id": "CMP-001",
+      "name": "Harish",
+      "category": "Water",
+      "desc": "No water in block B",
+      "date": "2025-08-01",
+      "status": "Resolved"
+    },
+    {
+      "id": "CMP-002",
+      "name": "KEERTHANA",
+      "category": "Electricity",
+      "desc": "there's uneven supply of electricity",
+      "date": "2026-04-21",
+      "status": "Resolved"
+    }
+  ]
+}

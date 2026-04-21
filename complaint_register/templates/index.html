@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% block title %}Submit Complaint{% endblock %}
+
+{% block extra_styles %}
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 7px;
+    color: #444;
+    font-size: 14px;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: inherit;
+    transition: border 0.2s, box-shadow 0.2s;
+    background: #fafafa;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #4fc3f7;
+    box-shadow: 0 0 0 3px rgba(79,195,247,0.15);
+    background: #fff;
+}
+.form-group textarea { resize: vertical; min-height: 110px; }
+
+.btn-submit {
+    background: #1a1a2e;
+    color: #fff;
+    border: none;
+    padding: 13px 36px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    width: 100%;
+    letter-spacing: 0.3px;
+}
+.btn-submit:hover { background: #4fc3f7; color: #1a1a2e; }
+.btn-submit:active { transform: scale(0.98); }
+
+.form-wrap {
+    max-width: 540px;
+    margin: 0 auto;
+}
+
+.info-box {
+    background: #e3f2fd;
+    border-left: 4px solid #4fc3f7;
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin-bottom: 28px;
+    font-size: 14px;
+    color: #0277bd;
+}
+
+.category-icons { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+.cat-badge {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.15s;
+}
+.cat-badge.electricity { background: #fff9c4; color: #f57f17; }
+.cat-badge.water { background: #e3f2fd; color: #0277bd; }
+.cat-badge.food { background: #e8f5e9; color: #2e7d32; }
+.cat-badge.other { background: #f3e5f5; color: #6a1b9a; }
+{% endblock %}
+
+{% block content %}
+<div class="form-wrap">
+    <h1 class="page-title">Submit a Complaint</h1>
+
+    <div class="info-box">
+        ℹ️ Your complaint will be assigned a unique ID automatically and tracked by the admin team.
+    </div>
+
+    <div class="card">
+        <form action="/submit" method="POST" id="complaintForm">
+
+            <div class="form-group">
+                <label>👤 Your Full Name</label>
+                <input type="text" name="name" placeholder="e.g. Kushal Yadav B M" required maxlength="100">
+            </div>
+
+            <div class="form-group">
+                <label>📂 Category</label>
+                <select name="category" id="categorySelect" required>
+                    <option value="" disabled selected>-- Select a category --</option>
+                    <option value="Electricity">⚡ Electricity</option>
+                    <option value="Water">💧 Water</option>
+                    <option value="Food">🍽 Food</option>
+                    <option value="Other">📌 Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>📝 Description</label>
+                <textarea name="desc" placeholder="Describe your complaint in detail..." required maxlength="500"></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">🚀 Submit Complaint</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Complaint Register{% endblock %}</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f0f2f5;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        /* ── Navbar ── */
+        nav {
+            background: #1a1a2e;
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        .nav-brand {
+            color: #fff;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .nav-brand span { color: #4fc3f7; }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 10px;
+        }
+        nav ul a {
+            color: #ccc;
+            text-decoration: none;
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: background 0.2s, color 0.2s;
+        }
+        nav ul a:hover, nav ul a.active {
+            background: #4fc3f7;
+            color: #1a1a2e;
+            font-weight: 600;
+        }
+
+        /* ── Page container ── */
+        .container {
+            max-width: 1100px;
+            margin: 36px auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #1a1a2e;
+        }
+
+        /* ── Cards ── */
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 28px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            margin-bottom: 24px;
+        }
+
+        /* ── Flash messages ── */
+        .flash {
+            background: #e8f5e9;
+            border-left: 4px solid #43a047;
+            color: #2e7d32;
+            padding: 12px 18px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        {% block extra_styles %}{% endblock %}
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-brand">🗂 Complaint <span>Register</span></div>
+        <ul>
+            <li><a href="/" class="{% if request.path == '/' %}active{% endif %}">📝 Submit</a></li>
+            <li><a href="/admin" class="{% if request.path == '/admin' %}active{% endif %}">📊 Admin</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
